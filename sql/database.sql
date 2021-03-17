@@ -7,10 +7,10 @@ CREATE TABLE IF NOT EXISTS users(
     userName varchar(255) NOT NULL,
     userEmail varchar(255) NOT NULL,
     userPassword char(60) NOT NULL,
-    userRol int NOT NULL,
+    userRole int NOT NULL,
     userRegDate date,
     PRIMARY KEY (userId),
-    CONSTRAINT FK_RoleUser FOREIGN KEY (userRol)
+    CONSTRAINT FK_RoleUser FOREIGN KEY (userRole)
     REFERENCES users(userId)
 );
 
@@ -31,6 +31,24 @@ CREATE TABLE IF NOT EXISTS comments(
     REFERENCES users(userId)
 );
 
+CREATE TABLE IF NOT EXISTS languages(
+	languageId int NOT NULL AUTO_INCREMENT,
+    languageName varchar(255) NOT NULL,
+    languageAppearance YEAR NOT NULL,
+    PRIMARY KEY (languageId)
+);
+
+CREATE TABLE IF NOT EXISTS containers(
+	containerId int NOT NULL AUTO_INCREMENT,
+    containerName varchar(255) NOT NULL,
+    containerDescription text,
+    containerDate date,
+    languageId int NOT NULL,
+    PRIMARY KEY (containerId),
+    CONSTRAINT FK_LanguageContainer FOREIGN KEY (languageId)
+    REFERENCES languages(languageId)
+);
+
 CREATE TABLE IF NOT EXISTS articles(
 	articleId int NOT NULL AUTO_INCREMENT,
     articleName varchar(255) NOT NULL,
@@ -46,20 +64,5 @@ CREATE TABLE IF NOT EXISTS articles(
     REFERENCES containers(containerId)
 );
 
-CREATE TABLE IF NOT EXISTS containers(
-	containerId int NOT NULL AUTO_INCREMENT,
-    containerName varchar(255) NOT NULL,
-    containerDescription text,
-    containerDate date,
-    languageId int NOT NULL,
-    PRIMARY KEY (containerId),
-    CONSTRAINT FK_LanguageContainer FOREIGN KEY (languageId)
-    REFERENCES languages(languageId)
-);
 
-CREATE TABLE IF NOT EXISTS languages(
-	languageId int NOT NULL AUTO_INCREMENT,
-    languageName varchar(255) NOT NULL,
-    languageAppearance YEAR NOT NULL,
-    PRIMARY KEY (languageId)
-);
+
