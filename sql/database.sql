@@ -7,9 +7,17 @@ CREATE TABLE IF NOT EXISTS users(
     userName varchar(255) NOT NULL,
     userEmail varchar(255) NOT NULL,
     userPassword char(60) NOT NULL,
-    userRol varchar(255) NOT NULL,
+    userRol int NOT NULL,
     userRegDate date,
-    PRIMARY KEY (userId)
+    PRIMARY KEY (userId),
+    CONSTRAINT FK_RoleUser FOREIGN KEY (userRol)
+    REFERENCES users(userId)
+);
+
+CREATE TABLE IF NOT EXISTS roles(
+	roleId int NOT NULL AUTO_INCREMENT,
+    roleName varchar(255) NOT NULL, 
+    PRIMARY KEY (roleId)
 );
     
 CREATE TABLE IF NOT EXISTS comments(
@@ -26,7 +34,6 @@ CREATE TABLE IF NOT EXISTS comments(
 CREATE TABLE IF NOT EXISTS articles(
 	articleId int NOT NULL AUTO_INCREMENT,
     articleName varchar(255) NOT NULL,
-    articleSubject varchar(255) NOT NULL,
     articleDescription mediumtext,
     articleImage varchar(255),
     articleDate date,
