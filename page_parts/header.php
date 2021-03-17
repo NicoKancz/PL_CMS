@@ -11,14 +11,14 @@
             <nav>
                 <h1 id="logo">Logo</h1>
                 <ul id="categories">
-                    <li><a href="./php.php">PHP</a></li>
-                    <li><a href="./javascript.php">JavaScript</a></li>
-                    <li><a href="./python.php">Python</a></li>
-                    <li><a href="./java.php">Java</a></li>
-                    <li><a href="./csharp.php">C#</a></li>
-                    <li><a href="./perl.php">Perl</a></li>
-                    <li><a href="./ruby.php">Ruby</a></li>
-                    <li><a href="./cplusplus.php">C++</a></li>
+                    <li><a href="./categories/php.php">PHP</a></li>
+                    <li><a href="./categories/javascript.php">JavaScript</a></li>
+                    <li><a href="./categories/python.php">Python</a></li>
+                    <li><a href="./categories/java.php">Java</a></li>
+                    <li><a href="./categories/csharp.php">C#</a></li>
+                    <li><a href="./categories/perl.php">Perl</a></li>
+                    <li><a href="./categories/ruby.php">Ruby</a></li>
+                    <li><a href="./categories/cplusplus.php">C++</a></li>
                 </ul>
                 <form method="post" action="search.php" id="search">
                     <input type="text" name="search" placeholder="Search">
