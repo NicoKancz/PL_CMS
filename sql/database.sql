@@ -67,5 +67,8 @@ CREATE TABLE IF NOT EXISTS articles(
 INSERT INTO languages(languageName, languageAppearance)
 VALUES('PHP', 1995);
 
+INSERT INTO languages(languageName, languageAppearance)
+VALUES('JavaScript', 1995); 
+
 
 

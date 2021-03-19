@@ -18,6 +18,11 @@ nav{
     align-items: center;
 }
 
+.error{
+    color: red;
+    line-height: 0.5;
+}
+
 #logo{
     width: 10%;
 }
@@ -29,6 +34,10 @@ nav{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+#categories:link{
+    text-decoration: none;
 }
 
 #btnAddLanguage{

@@ -9,7 +9,7 @@
     <body>
         <header>
             <nav>
-                <a href="/PL_CMS/index.php"><h1 id="logo">Logo</h1></a>
+                <a id="logo" href="/PL_CMS/index.php"><h1>Logo</h1></a>
                 <ul id="categories">
                     <?php
                         //get rows from the table languages and display on header as the categories
@@ -17,18 +17,19 @@
                         $conn = connect_db();
                         $rows = showLanguages($conn);
                         foreach($rows as $row){
-                            echo '<li><a href="/PL_CMS/category.php">' . $row['languageName'] . '</a></li>';
+                            echo '<li><a href="/PL_CMS/category.php?id=' . $row['languageId'] . '">' . $row['languageName'] . '</a></li>';
                         }
+                        close_db($conn);
                     ?>
                 </ul>
-                <a href="/PL_CMS/addLanguage.php"><button id="btnAddLanguage">Add language</button></a>
+                <a id="btnAddLanguage" href="/PL_CMS/addLanguage.php"><button>Programmeertaal toevoegen</button></a>
                 <form method="post" action="/PL_CMS/search.php" id="search">
                     <input type="text" name="search" placeholder="Search">
                     <button type="submit">
                         <img src="/PL_CMS/img/search_icon.png" alt="Image search icon" width="25px" height="25px"/>
                     </button>
                 </form>
-                <a href="/PL_CMS/login.php"><button id="btnLogin">Login</button></a>
+                <a id="btnLogin" href="/PL_CMS/login.php"><button>Login</button></a>
             </nav>
         </header>
 
