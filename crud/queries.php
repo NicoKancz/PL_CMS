@@ -1,6 +1,14 @@
 <?php
-require_once './database.php';
+require_once 'database.php';
 
+//Language queries
+function showLanguages($conn){
+    $query = 'SELECT * FROM languages';
+    $result = $conn->query($query);
+    return $result->fetchAll(PDO::FETCH_ASSOC);
+}
+
+//Container queries
 //todo: create container
 function createContainer($conn, $name, $desc, $date, $languageId){
     $query = "INSERT INTO containers(containerName,containerDescription,containerDate,languageId)
