@@ -64,5 +64,8 @@ CREATE TABLE IF NOT EXISTS articles(
     REFERENCES containers(containerId)
 );
 
+INSERT INTO languages(languageName, languageAppearance)
+VALUES('PHP', 1995);
+
 
 

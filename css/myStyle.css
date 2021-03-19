@@ -14,6 +14,7 @@ h1{
 nav{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -27,6 +28,11 @@ nav{
     list-style-type: none;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#btnAddLanguage{
+    width: 10%;
 }
 
 #search{
@@ -36,7 +42,7 @@ nav{
 }
 
 #btnLogin{
-    width: 20%;
+    width: 10%;
 }
 
 
