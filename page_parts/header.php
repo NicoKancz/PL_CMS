@@ -13,7 +13,7 @@
                 <ul id="categories">
                     <?php
                         //get rows from the table languages and display on header as the categories
-                        require_once './crud/queries.php';
+                        require_once './includes/queries.inc.php';
                         $conn = connect_db();
                         $rows = showLanguages($conn);
                         foreach($rows as $row){
