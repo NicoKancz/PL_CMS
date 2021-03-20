@@ -1,5 +1,5 @@
 <?php
-    require_once './crud/queries.php';
+    require_once './includes/queries.inc.php';
     require_once './classes/Language.php';
     include_once './page_parts/header.php';
 

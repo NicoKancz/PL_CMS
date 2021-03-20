@@ -1,7 +1,7 @@
     <main>
 <!--        todo: design containers-->
         <?php
-            require_once './crud/queries.php';
+            require_once './includes/queries.inc.php';
 
             $conn = connect_db();
             $rows = showContainers($conn);
