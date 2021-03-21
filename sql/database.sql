@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users(
     userRegDate date,
     PRIMARY KEY (userId),
     CONSTRAINT FK_RoleUser FOREIGN KEY (userRole)
-    REFERENCES users(userId)
+    REFERENCES roles(roleId)
 );
 
 CREATE TABLE IF NOT EXISTS roles(
@@ -78,6 +78,11 @@ VALUES('Gebruiker');
 
 INSERT INTO roles(roleName)
 VALUES('Moderator'); 
+
+ALTER TABLE users DROP FOREIGN KEY FK_RoleUser;
+ALTER TABLE users ADD CONSTRAINT FK_RoleUser FOREIGN KEY (userRole) REFERENCES roles(roleId);
+
+UPDATE users SET userRole=1 WHERE userId=5;
 
 
 

@@ -50,7 +50,8 @@ nav{
     justify-content: flex-end;
 }
 
-#btnLogin{
+#loginSystem{
+    color: dodgerblue;
     width: 10%;
 }
 

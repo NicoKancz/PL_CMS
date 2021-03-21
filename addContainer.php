@@ -3,7 +3,6 @@
     require_once './classes/Container.php';
     include_once './page_parts/header.php';
 
-    session_start();
     //initialize name & appearance variables
     $nameErr = $descErr = '';
     $name = $desc = '';
