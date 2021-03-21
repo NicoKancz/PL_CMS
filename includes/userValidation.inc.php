@@ -58,8 +58,8 @@ function passwordLoginCheck($conn, $username, $password){
 
 function loginUser($conn, $username){
     $usernameExists = userNameExistCheck($conn, $username, $username);
-
     session_start();
     $_SESSION['userId'] = $usernameExists['userId'];
     $_SESSION['userName'] = $usernameExists['userName'];
+    $_SESSION['userRole'] = $usernameExists['userRole'];
 }

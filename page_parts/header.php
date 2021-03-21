@@ -1,5 +1,9 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
     <head>
         <meta content="text/html" charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,14 +26,27 @@
                         close_db($conn);
                     ?>
                 </ul>
-                <a id="btnAddLanguage" href="/PL_CMS/addLanguage.php"><button>Programmeertaal toevoegen</button></a>
+                <?php
+                if(isset($_SESSION['userName']) && $_SESSION['userRole'] == 1){
+                    echo '<a id="btnAddLanguage" href="/PL_CMS/addLanguage.php">Programmeertaal toevoegen</a>';
+                }
+                ?>
                 <form method="post" action="/PL_CMS/search.php" id="search">
                     <input type="text" name="search" placeholder="Search">
                     <button type="submit">
                         <img src="/PL_CMS/img/search_icon.png" alt="Image search icon" width="25px" height="25px"/>
                     </button>
                 </form>
-                <a id="btnLogin" href="/PL_CMS/login.php"><button>Login</button></a>
+                <?php
+                if(isset($_SESSION['userName'])){
+                    echo '<span id="loginSystem">
+                            <a id="btnProfile" href="/PL_CMS/profile.php">Profiel</a>
+                            <a id="btnLogout" href="/PL_CMS/includes/logout.inc.php">Uitloggen</a>
+                        </span>';
+                }else{
+                    echo '<span id="loginSystem"><a id="btnLogin" href="/PL_CMS/login.php">Inloggen</a></span>';
+                }
+                ?>
             </nav>
         </header>
 

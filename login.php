@@ -43,7 +43,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <input type="text" name="name" placeholder="Gebruikersnaam"><br>
         <span class="error">* <?php echo $nameErr;?></span><br>
-        <input type="text" name="password" placeholder="Wachtwoord"><br>
+        <input type="password" name="password" placeholder="Wachtwoord"><br>
         <span class="error">* <?php echo $passwordErr;?></span><br>
         <input type="submit" name="btnSubmit" value="Inlogen">
     </form><br>
