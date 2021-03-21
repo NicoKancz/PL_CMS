@@ -70,5 +70,14 @@ VALUES('PHP', 1995);
 INSERT INTO languages(languageName, languageAppearance)
 VALUES('JavaScript', 1995); 
 
+INSERT INTO roles(roleName)
+VALUES('Administrator'); 
+
+INSERT INTO roles(roleName)
+VALUES('Gebruiker'); 
+
+INSERT INTO roles(roleName)
+VALUES('Moderator'); 
+
 
 

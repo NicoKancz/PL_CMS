@@ -17,7 +17,7 @@
                         $conn = connect_db();
                         $rows = showLanguages($conn);
                         foreach($rows as $row){
-                            echo '<li><a href="/PL_CMS/category.php?id=' . $row['languageId'] . '">' . $row['languageName'] . '</a></li>';
+                            echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . $row['languageName'] . '</a></li>';
                         }
                         close_db($conn);
                     ?>

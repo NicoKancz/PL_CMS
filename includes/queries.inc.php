@@ -9,16 +9,16 @@ function createLanguage($conn, $language){
 
 function showLanguage($conn, $id){
     $query = "SELECT * FROM languages WHERE languageId=?";
-    $result = $conn->prepare($query);
-    $result->execute([$id]);
-    return $result->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function showLanguages($conn){
     $query = 'SELECT * FROM languages';
-    $result = $conn->prepare($query);
-    $result->execute();
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 //Container queries
@@ -30,15 +30,15 @@ function createContainer($conn, $container){
 
 function showContainer($conn, $id){
     $query = "SELECT * FROM containers WHERE containerId=?";
-    $result = $conn->prepare($query);
-    return $result->execute([$id]);
+    $stmt = $conn->prepare($query);
+    return $stmt->execute([$id]);
 }
 
 function showContainers($conn){
     $query = "SELECT * FROM containers";
-    $result = $conn->prepare($query);
-    $result->execute();
-    return $result->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 //todo: update container
@@ -58,14 +58,22 @@ function deleteContainer($conn, $id){
 //todo: show articles
 
 //User queries
-function createUser($conn, $user){
-    $query = "INSERT INTO users(userName,userEmail,userPassword,userRole,userRegDate)
-                VALUES(?,?,?,?,?)";
-    $conn->prepare($query)->execute([$user->getName(),$user->getEmail(),$user->getPassword(),$user->getRole(),$user->getRegDate()]);
+function createUser($conn, $user, $password){
+    $query = "INSERT INTO users(userName,userEmail,userPassword,userRole,userRegDate) VALUES(?,?,?,?,?)";
+    $roleId = getRoleId($conn, $user->getRole());
+    $conn->prepare($query)->execute([$user->getName(),$user->getEmail(),$password,$roleId,$user->getRegDate()]);
 }
 
 function getUser($conn, $id){
     $query = "SELECT * FROM users WHERE userId=?";
-    $result = $conn->prepare($query);
-    return $result->execute([$id]);
+    $stmt = $conn->prepare($query);
+    return $stmt->execute([$id]);
+}
+
+//Role queries
+function getRoleId($conn, $role){
+    $query = "SELECT roleId FROM roles WHERE roleName=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$role]);
+    return $stmt->fetch(PDO::FETCH_ASSOC)['roleId'];
 }
