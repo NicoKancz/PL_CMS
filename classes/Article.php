@@ -7,6 +7,8 @@ class Article{
     protected $description = "Beschrijving";
     protected $image = "./img/image.jpg";
     protected $date = 2021-03-17;
+    protected $userId = 0;
+    protected $containerId = 0;
 
     //methods
     //constructor
