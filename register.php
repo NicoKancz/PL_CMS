@@ -2,7 +2,7 @@
 include_once './page_parts/header.php';
 require_once './classes/User.php';
 require_once './includes/queries.inc.php';
-require_once './includes/userValidation.inc.php';
+require_once './includes/validation.inc.php';
 
 //initialize name & appearance variables
 $nameErr = $emailErr = $passwordErr = '';
@@ -53,7 +53,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 ?>
-    <h2>Een nieuwe gebruiker aanmaken</h2>
+    <h1>Registreren</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <input type="text" name="name" placeholder="Gebruikersnaam"><br>
         <span class="error">* <?php echo $nameErr;?></span><br>
@@ -62,7 +62,8 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="password" name="password" placeholder="Wachtwoord"><br>
         <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
         <span class="error">* <?php echo $passwordErr;?></span><br>
-        <input type="submit" name="btnSubmit" value="Registreren">
+        <input type="submit" name="btnSubmit" value="Registreren"><br>
+        <span class="error">* Verplichte velden</span>
     </form>
 <?php
 include_once './page_parts/footer.php';

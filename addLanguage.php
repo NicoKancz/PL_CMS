@@ -1,5 +1,6 @@
 <?php
     require_once './includes/queries.inc.php';
+    require_once './includes/validation.inc.php';
     require_once './classes/Language.php';
     include_once './page_parts/header.php';
 
@@ -10,13 +11,13 @@
     //check if form is submitted
     if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         //check if language fields are not empty
-        if(empty($_POST['name'])){
+        if(emptyInputCheck($_POST['name'])){
             $nameErr = 'Name of the language is required';
         }else{
             $name = $_POST['name'];
         }
 
-        if(empty($_POST['appearance'])){
+        if(emptyInputCheck($_POST['appearance'])){
             $appearanceErr = 'Year of the first appearance of the language is required';
         }else{
             $appearance = $_POST['appearance'];
@@ -45,7 +46,7 @@
         </select>
         <span class="error">* <?php echo $appearanceErr;?></span><br>
         <input type="submit" name="btnSubmit" value="Submit"/><br>
-        <span class="error">* Required Fields</span>
+        <span class="error">* Verplichte velden</span>
     </form>
 <?php
     include_once './page_parts/footer.php';

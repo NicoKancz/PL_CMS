@@ -13,7 +13,7 @@
     <body>
         <header>
             <nav>
-                <a id="logo" href="/PL_CMS/index.php"><h1>Logo</h1></a>
+                <a id="logo" href="/PL_CMS/index.php">Logo</a>
                 <ul id="categories">
                     <?php
                         //get rows from the table languages and display on header as the categories
@@ -21,22 +21,21 @@
                         $conn = connect_db();
                         $rows = showLanguages($conn);
                         foreach($rows as $row){
-                            echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . $row['languageName'] . '</a></li>';
+                            echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . htmlspecialchars($row['languageName']) . '</a></li>';
                         }
                         close_db($conn);
+//                        if(isset($_SESSION['userName']) && $_SESSION['userRole'] === 1){
+                            echo '<li><a id="btnAddLanguage" href="/PL_CMS/addLanguage.php"> + </a></li>';
+//                        }
                     ?>
                 </ul>
-                <?php
-                if(isset($_SESSION['userName']) && $_SESSION['userRole'] == 1){
-                    echo '<a id="btnAddLanguage" href="/PL_CMS/addLanguage.php">Programmeertaal toevoegen</a>';
-                }
-                ?>
-                <form method="post" action="/PL_CMS/search.php" id="search">
-                    <input type="text" name="search" placeholder="Search">
-                    <button type="submit">
-                        <img src="/PL_CMS/img/search_icon.png" alt="Image search icon" width="25px" height="25px"/>
-                    </button>
-                </form>
+                <a id="search" href="search.php">Zoeken</a>
+<!--                <form method="post" action="/PL_CMS/search.php" id="search">-->
+<!--                    <input type="text" name="search" placeholder="Search">-->
+<!--                    <button type="submit">-->
+<!--                        <img src="/PL_CMS/img/search_icon.png" alt="Image search icon" width="25px" height="25px"/>-->
+<!--                    </button>-->
+<!--                </form>-->
                 <?php
                 if(isset($_SESSION['userName'])){
                     echo '<span id="loginSystem">
