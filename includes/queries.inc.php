@@ -77,3 +77,10 @@ function getRoleId($conn, $role){
     $stmt->execute([$role]);
     return $stmt->fetch(PDO::FETCH_ASSOC)['roleId'];
 }
+
+function getRoleName($conn, $id){
+    $query = "SELECT roleName FROM roles WHERE roleId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC)['roleName'];
+}

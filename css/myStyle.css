@@ -85,6 +85,10 @@ a:hover{
     line-height: 0.5;
 }
 
+.userParagraph{
+    color: white;
+}
+
 .loginLink{
     color: dodgerblue !important;
 }
@@ -115,6 +119,11 @@ a:hover{
 
 #loginSystem{
     width: 10%;
+}
+
+#btnLogout{
+    color: dodgerblue;
+    font-size: large;
 }
 
 
