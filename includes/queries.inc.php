@@ -34,10 +34,10 @@ function showContainer($conn, $id){
     return $stmt->execute([$id]);
 }
 
-function showContainers($conn){
-    $query = "SELECT * FROM containers";
+function showContainers($conn, $id){
+    $query = "SELECT * FROM containers WHERE languageId=?";
     $stmt = $conn->prepare($query);
-    $stmt->execute();
+    $stmt->execute([$id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
