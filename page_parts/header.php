@@ -13,7 +13,7 @@
     <body>
         <header>
             <nav>
-                <a id="logo" href="/PL_CMS/index.php">Logo</a>
+                <a id="logo" href="/PL_CMS/index.php">PL-<br>CMS</a>
                 <ul id="categories">
                     <?php
                         //get rows from the table languages and display on header as the categories

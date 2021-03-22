@@ -41,16 +41,18 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
     <h1>Inloggen</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="text" name="name" placeholder="Gebruikersnaam"><br>
+        <label for="name">Gebruikersnaam</label>
         <span class="error">* <?php echo $nameErr;?></span><br>
-        <input type="password" name="password" placeholder="Wachtwoord"><br>
+        <input type="text" name="name" placeholder="Gebruikersnaam"><br>
+        <label for="name">Wachtwoord</label>
         <span class="error">* <?php echo $passwordErr;?></span><br>
+        <input type="password" name="password" placeholder="Wachtwoord"><br>
         <input type="submit" name="btnSubmit" value="Inlogen"><br>
         <span class="error">* Verplichte velden</span>
     </form><br>
     <div class="center">
-        <a href="./register.php">Nog geen gebruiker?</a><br>
-        <a href="./reset-password.php">Wachtwoord vergeten?</a>
+        <a class="loginLink" href="./register.php">Nog geen gebruiker?</a><br>
+        <a class="loginLink" href="./reset-password.php">Wachtwoord vergeten?</a>
     </div>
 <?php
 include_once './page_parts/footer.php';

@@ -36,15 +36,18 @@
 ?>
     <h1>Een nieuwe programmeertaal toevoegen</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="text" name="name"/>
+        <label for="name">Programmeertaal-naam</label>
         <span class="error">* <?php echo $nameErr;?></span><br>
+        <input type="text" name="name"/>
+        <label for="appearance">Publicatiejaar</label>
+        <span class="error">* <?php echo $appearanceErr;?></span><br>
         <select class="form-control" name="appearance">
             <?php
             for ($year = (int)date('Y'); 1900 <= $year; $year--): ?>
                 <option value="<?=$year;?>"><?=$year;?></option>
             <?php endfor; ?>
         </select>
-        <span class="error">* <?php echo $appearanceErr;?></span><br>
+
         <input type="submit" name="btnSubmit" value="Submit"/><br>
         <span class="error">* Verplichte velden</span>
     </form>

@@ -55,13 +55,17 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
     <h1>Registreren</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <input type="text" name="name" placeholder="Gebruikersnaam"><br>
+        <label for="name">Gebruikersnaam</label>
         <span class="error">* <?php echo $nameErr;?></span><br>
-        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="name" placeholder="Gebruikersnaam"><br>
+        <label for="email">Email</label>
         <span class="error">* <?php echo $emailErr;?></span><br>
-        <input type="password" name="password" placeholder="Wachtwoord"><br>
-        <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <label for="password">Wachtwoord</label>
         <span class="error">* <?php echo $passwordErr;?></span><br>
+        <input type="password" name="password" placeholder="Wachtwoord"><br>
+        <label for="passwordRepeat">Wachtwoord herhalen</label><br>
+        <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
         <input type="submit" name="btnSubmit" value="Registreren"><br>
         <span class="error">* Verplichte velden</span>
     </form>
