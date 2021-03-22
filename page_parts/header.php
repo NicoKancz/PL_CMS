@@ -40,7 +40,6 @@
                 if(isset($_SESSION['userName'])){
                     echo '<span id="loginSystem">
                             <a id="btnProfile" href="/PL_CMS/profile.php">Profiel</a>
-                            <a id="btnLogout" href="/PL_CMS/includes/logout.inc.php">Uitloggen</a>
                         </span>';
                 }else{
                     echo '<span id="loginSystem"><a id="btnLogin" href="/PL_CMS/login.php">Inloggen</a></span>';
