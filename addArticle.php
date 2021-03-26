@@ -8,24 +8,24 @@ include_once './page_parts/header.php';
 $nameErr = $descErr = '';
 $name = $desc = '';
 $conn = connect_db();
-$language = showLanguage($conn, htmlspecialchars($_SESSION['languageId']));
+$language = getLanguage($conn, htmlspecialchars($_SESSION['languageId']));
 
 //check if form is submitted
 if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     //check if container fields are not empty
     if (emptyInputCheck($_POST['name'])) {
-        $nameErr = 'Naam van de container is verplicht';
+        $nameErr = 'Naam is verplicht';
     } else {
         $name = $_POST['name'];
     }
 
     if (emptyInputCheck($_POST['desc'])) {
-        $descErr = 'Beschrijving van de container is verplicht';
+        $descErr = 'Beschrijving is verplicht';
     } else {
         $desc = $_POST['desc'];
     }
 
-    if (isset($_POST['name']) && isset($_POST['desc'])) {
+    if (!empty($_POST['name']) && !empty($_POST['desc'])) {
         $newContainer = new Container($_POST['name'], $_POST['desc'],date("Y-m-d"),$_SESSION['languageId']);
 
         createContainer($conn, $newContainer);
@@ -43,7 +43,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="desc">Beschrijving</label>
             <span class="error">* <?php echo $descErr;?></span><br>
             <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"></textarea><br>
-            <input type="submit" name="btnSubmit" value="Submit"/><br>
+            <input class="btnSubmit" type="submit" name="btnSubmit" value="Submit"/><br>
             <span class="error">* Verplichte velden</span>
         </form>
     </main>

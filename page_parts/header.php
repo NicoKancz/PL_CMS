@@ -13,20 +13,22 @@
     <body>
         <header>
             <nav>
-                <a id="logo" href="/PL_CMS/index.php">PL-<br>CMS</a>
+<!--                todo: class active toevoegen aan links-->
+                <a id="logo" class="<?php echo ($_SERVER['PHP_SELF'] == "/PL_CMS/index.php" ? "active" : "")?>" href="/PL_CMS/index.php">PL-<br>CMS</a>
                 <ul id="categories">
                     <?php
                         //get rows from the table languages and display on header as the categories
                         require_once './includes/queries.inc.php';
                         $conn = connect_db();
-                        $rows = showLanguages($conn);
+                        $rows = getLanguages($conn);
                         foreach($rows as $row){
                             echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . htmlspecialchars($row['languageName']) . '</a></li>';
                         }
                         close_db($conn);
-//                        if(isset($_SESSION['userName']) && $_SESSION['userRole'] === 1){
+
+                        if(isset($_SESSION['userName']) && $_SESSION['userRole'] == 1){
                             echo '<li><a id="btnAddLanguage" href="/PL_CMS/addLanguage.php"> + </a></li>';
-//                        }
+                        }
                     ?>
                 </ul>
                 <a id="search" href="search.php">Zoeken</a>
