@@ -21,6 +21,18 @@ function getLanguages($conn){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function updateLanguage($conn, $id, $lang){
+    $query = "UPDATE languages SET languageName=?, languageAppearance=? WHERE languageId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$lang->getName(),$lang->getAppearance(),$id]);
+}
+
+function deleteLanguage($conn, $id){
+    $query = "DELETE FROM languages WHERE languageId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+}
+
 //Container queries
 function createContainer($conn, $container){
     $query = "INSERT INTO containers(containerName,containerDescription,containerDate,languageId)
