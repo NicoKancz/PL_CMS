@@ -22,7 +22,12 @@
                         $conn = connect_db();
                         $rows = getLanguages($conn);
                         foreach($rows as $row){
-                            echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . htmlspecialchars($row['languageName']) . '</a></li>';
+                            echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . htmlspecialchars($row['languageName']) . '</a>';
+//                            if(isset($_SESSION['userName']) && $_SESSION['userRole'] == 1){
+//                                echo '<a class="btnDeleteLanguage" href="/PL_CMS/includes/deleteLanguage.inc.php?id=' . $row['languageId'] . '"> - </a>';
+//                                echo '<a class="btnUpdateLanguage" href="/PL_CMS/includes/updateLanguage.php?id=' . $row['languageId'] . '"> - </a>';
+//                            }
+                            echo '</li>';
                         }
                         close_db($conn);
 
@@ -40,11 +45,11 @@
 <!--                </form>-->
                 <?php
                 if(isset($_SESSION['userName'])){
-                    echo '<span id="loginSystem">
+                    echo '<span class="loginSystem">
                             <a id="btnProfile" href="/PL_CMS/profile.php">Profiel</a>
                         </span>';
                 }else{
-                    echo '<span id="loginSystem"><a id="btnLogin" href="/PL_CMS/login.php">Inloggen</a></span>';
+                    echo '<span class="loginSystem"><a id="btnLogin" href="/PL_CMS/login.php">Inloggen</a></span>';
                 }
                 ?>
             </nav>
