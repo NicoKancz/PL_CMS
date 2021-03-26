@@ -12,13 +12,13 @@
     if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         //check if language fields are not empty
         if(emptyInputCheck($_POST['name'])){
-            $nameErr = 'Name of the language is required';
+            $nameErr = 'Naam is verplicht';
         }else{
             $name = $_POST['name'];
         }
 
         if(emptyInputCheck($_POST['appearance'])){
-            $appearanceErr = 'Year of the first appearance of the language is required';
+            $appearanceErr = 'Publicatiejaar is verplicht';
         }else{
             $appearance = $_POST['appearance'];
         }
@@ -38,7 +38,7 @@
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="name">Programmeertaal-naam</label>
         <span class="error">* <?php echo $nameErr;?></span><br>
-        <input type="text" name="name"/>
+        <input type="text" name="name" placeholder="Naam van het programmeertaal"/><br>
         <label for="appearance">Publicatiejaar</label>
         <span class="error">* <?php echo $appearanceErr;?></span><br>
         <select class="form-control" name="appearance">
@@ -46,9 +46,9 @@
             for ($year = (int)date('Y'); 1900 <= $year; $year--): ?>
                 <option value="<?=$year;?>"><?=$year;?></option>
             <?php endfor; ?>
-        </select>
+        </select><br>
 
-        <input type="submit" name="btnSubmit" value="Submit"/><br>
+        <input class="btnSubmit" type="submit" name="btnSubmit" value="Taal aanmaken"/><br>
         <span class="error">* Verplichte velden</span>
     </form>
 <?php

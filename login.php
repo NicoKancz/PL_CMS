@@ -47,7 +47,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         <label for="name">Wachtwoord</label>
         <span class="error">* <?php echo $passwordErr;?></span><br>
         <input type="password" name="password" placeholder="Wachtwoord"><br>
-        <input type="submit" name="btnSubmit" value="Inlogen"><br>
+        <input class="btnSubmit" type="submit" name="btnSubmit" value="Inloggen"><br>
         <span class="error">* Verplichte velden</span>
     </form><br>
     <div class="center">

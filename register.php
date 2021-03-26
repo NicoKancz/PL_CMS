@@ -14,27 +14,27 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     $conn = connect_db();
     //check if language fields are not empty
     if(emptyInputCheck($_POST['name'])){
-        $nameErr = 'Name is required';
+        $nameErr = 'Name is verplicht';
     }elseif(invalidUsernameCheck($_POST['name'])){
-        $nameErr = 'Invalid characters';
+        $nameErr = 'Naam is ongeldig';
     }elseif(userNameExistCheck($conn, $_POST['name'], $_POST['email'])){
-        $nameErr = 'Username already exist';
+        $nameErr = 'Gebruikersnaam bestaat al';
     }else{
         $name = $_POST['name'];
     }
 
     if(emptyInputCheck($_POST['email'])){
-        $emailErr = 'Email is required';
+        $emailErr = 'Email is verplicht';
     }elseif(invalidEmailCheck($_POST['email'])){
-        $emailErr = 'Email is invalid';
+        $emailErr = 'Email is ongeldig';
     }else{
         $email = $_POST['email'];
     }
 
     if(emptyInputCheck($_POST['password'])){
-        $passwordErr = 'Password is required';
+        $passwordErr = 'Wachtwoord is verplicht';
     }elseif(passwordMatchCheck($_POST['password'], $_POST['passwordRepeat'])){
-        $passwordErr = 'Password is not matching';
+        $passwordErr = 'Wachtwoord komt niet overeen';
     }else{
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     }
@@ -45,8 +45,8 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         createUser($conn, $newUser, $password);
         close_db($conn);
         //header("location:login.php");
-        echo 'Welkom op onze website ' . $name . '!<br>
-                Nu kan je met je gegevens inlogen.';
+        echo '<p id="geregistreerdText">Welkom op onze website ' . $name . '!<br>
+                Nu kan je met je gegevens inlogen.</p>';
         exit();
     }else{
         close_db($conn);
@@ -66,7 +66,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="password" name="password" placeholder="Wachtwoord"><br>
         <label for="passwordRepeat">Wachtwoord herhalen</label><br>
         <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
-        <input type="submit" name="btnSubmit" value="Registreren"><br>
+        <input class="btnSubmit" type="submit" name="btnSubmit" value="Registreren"><br>
         <span class="error">* Verplichte velden</span>
     </form>
 <?php
