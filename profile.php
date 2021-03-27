@@ -11,7 +11,7 @@ require_once './includes/queries.inc.php';
                 echo '<label>Rol:</label>';
                 echo '<p class="userParagraph">' . getRoleName($conn, htmlspecialchars($_SESSION['userRole'])) . '</p>';
             ?>
-            <a class="btnProfile" href="./changePassword.php">Wachtwoord veranderen</a>
+            <a class="btnProfile" href="./changePassword.php">Wachtwoord veranderen</a><br>
             <a class="btnProfile" href="./includes/logout.inc.php">Uitloggen</a>
         </div>
     </main>

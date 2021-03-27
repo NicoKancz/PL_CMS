@@ -41,6 +41,15 @@ select, input, textarea{
     margin-bottom: 2%;
 }
 
+.btnProfile{
+    color: dodgerblue;
+    font-size: large;
+}
+
+.loginLink{
+    color: dodgerblue !important;
+}
+
 a:link, a:visited{
     color: midnightblue;
     border-radius: 5px;
@@ -114,10 +123,6 @@ a:hover{
     color: white;
 }
 
-.loginLink{
-    color: dodgerblue !important;
-}
-
 #logo{
     color: black;
     font-size: 30px;
@@ -150,11 +155,6 @@ a:hover{
 #loginSystem{
     width: 10%;
     font-size: 20px;
-}
-
-#btnLogout{
-    color: dodgerblue;
-    font-size: large;
 }
 
 #indexText{

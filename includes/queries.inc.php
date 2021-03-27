@@ -112,6 +112,18 @@ function updateUser($conn, $id, $user){
     $stmt->execute([$user->getEmail(),$user->getPassword(),$id]);
 }
 
+function changePassword($conn, $id, $password){
+    $query = "UPDATE users SET userPassword=? WHERE userId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$password,$id]);
+}
+
+function deleteUser($conn, $id){
+    $query = "DELETE FROM users WHERE userId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+}
+
 //Role queries
 function getRoleId($conn, $role){
     $query = "SELECT roleId FROM roles WHERE roleName=?";
