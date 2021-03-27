@@ -67,8 +67,31 @@ function deleteContainer($conn, $id){
 }
 
 //Article queries
-//todo: create article
-//todo: show articles
+function createArticle($conn, $article){
+    $query = "INSERT INTO articles(articleName, articleDescription, articleImage, articleDate, userId, containerId) 
+                VALUES(?,?,?,?,?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$article->getName(),$article->getDesc(),$article->getImage(),$article->getDate(),$article->getUserId(),$article->getContainerId()]);
+}
+
+function getArticle($conn, $id){
+    $query = "SELECT * FROM articles WHERE articleId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function updateArticle($conn, $id, $article){
+    $query = "UPDATE articles SET articleName=?, articleDescription=?, articleImage=? WHERE articleId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$article->getName(),$article->getDesc(),$article->getImage(),$article->getDate(),$id]);
+}
+
+function deleteArticle($conn, $id){
+    $query = "DELETE FROM articles WHERE articleId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+}
 
 //User queries
 function createUser($conn, $user, $password){
@@ -81,6 +104,12 @@ function getUser($conn, $id){
     $query = "SELECT * FROM users WHERE userId=?";
     $stmt = $conn->prepare($query);
     return $stmt->execute([$id]);
+}
+
+function updateUser($conn, $id, $user){
+    $query = "UPDATE users SET userEmail=?, userPassword=? WHERE userId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$user->getEmail(),$user->getPassword(),$id]);
 }
 
 //Role queries

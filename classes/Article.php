@@ -47,4 +47,12 @@ class Article{
     public function setImage($img){
         $this->image = $img;
     }
+
+    public function getUserId(){
+        return $this->userId;
+    }
+
+    public function getContainerId(){
+        return $this->containerId;
+    }
 }

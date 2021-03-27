@@ -41,16 +41,25 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 <main>
-    <h1><?php echo $result['languageName'] ?> bijwerken</h1>
-    <form method="post" action="updateContainer.php?id=<?php echo htmlspecialchars($id) ?>">
-        <label for="name">Naam van het taal</label>
-        <span class="error">* <?php echo $nameErr;?></span><br>
-        <input type="text" name="name" placeholder="Naam" value="<?php echo $result['languageName'] ?>"/><br>
-        <label for="desc">Publicatiejaar</label>
-        <span class="error">* <?php echo $appearanceErr;?></span><br>
-        <textarea name="appearance" cols="60" rows="10" placeholder="Publicatiejaar van het taal">
-            <?php echo $result['languageAppearance'] ?>
-        </textarea><br>
+    <h1><?=$result['languageName'];?> bijwerken</h1>
+    <form method="post" action="updateLanguage.php?id=<?=htmlspecialchars($id);?>">
+        <label for="name">Programmeertaal-naam</label>
+        <span class="error">* <?=$nameErr;?></span><br>
+        <input type="text" name="name" value="<?=$result['languageName'];?>" placeholder="Naam van het programmeertaal"/><br>
+        <label for="appearance">Publicatiejaar</label>
+        <span class="error">* <?=$appearanceErr;?></span><br>
+        <select class="form-control" name="appearance">
+            <?php
+            for ($year = (int)date('Y'); 1900 <= $year; $year--){
+                if($year == $result['languageAppearance']){
+                    echo "<option value=\"$year\" selected=\"selected\">$year</option>";
+                }else{
+                    echo "<option value=\"$year\">$year</option>";
+                }
+            }
+            ?>
+        </select><br>
+
         <input class="btnSubmit" type="submit" name="btnSubmit" value="Taal bijwerken"/><br>
         <span class="error">* Verplichte velden</span>
     </form>
