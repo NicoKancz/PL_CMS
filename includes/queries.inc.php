@@ -106,10 +106,18 @@ function getUser($conn, $id){
     return $stmt->execute([$id]);
 }
 
-function updateUser($conn, $id, $user){
-    $query = "UPDATE users SET userEmail=?, userPassword=? WHERE userId=?";
+function getUsers($conn){
+    $query = "SELECT * FROM users";
     $stmt = $conn->prepare($query);
-    $stmt->execute([$user->getEmail(),$user->getPassword(),$id]);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function changeUserRole($conn, $name, $role){
+    $query = "UPDATE users SET userRole=? WHERE userName=? OR userEmail=?";
+    $stmt = $conn->prepare($query);
+    $role = getRoleId($conn, $role);
+    $stmt->execute([$role,$name,$name]);
 }
 
 function changePassword($conn, $id, $password){

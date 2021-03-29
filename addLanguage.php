@@ -10,7 +10,7 @@
 
     //check if form is submitted
     if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
-        //check if language fields are not empty
+        //check if language fields are valid
         if(emptyInputCheck($_POST['name'])){
             $nameErr = 'Naam is verplicht';
         }else{
@@ -35,12 +35,12 @@
     }
 ?>
     <h1>Een nieuwe programmeertaal toevoegen</h1>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" action="<?=htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="name">Programmeertaal-naam</label>
-        <span class="error">* <?php echo $nameErr;?></span><br>
+        <span class="error">* <?=$nameErr;?></span><br>
         <input type="text" name="name" placeholder="Naam van het programmeertaal"/><br>
         <label for="appearance">Publicatiejaar</label>
-        <span class="error">* <?php echo $appearanceErr;?></span><br>
+        <span class="error">* <?=$appearanceErr;?></span><br>
         <select class="form-control" name="appearance">
             <?php
             for ($year = (int)date('Y'); 1900 <= $year; $year--): ?>

@@ -1,4 +1,6 @@
 <?php
+require_once 'queries.inc.php';
+
 function emptyInputCheck($input){
     $result = false;
     if(empty($input)){
@@ -41,6 +43,18 @@ function userNameExistCheck($conn, $username, $email){
     }else{
         return false;
     }
+}
+
+function userRoleCheck($conn, $username, $role){
+    $usernameExists = userNameExistCheck($conn, $username, $username);
+
+    $result = false;
+    $roleId = $usernameExists['userRole'];
+
+    if(getRoleId($conn, $role) == $roleId){
+        $result = true;
+    }
+    return $result;
 }
 
 function passwordLoginCheck($conn, $username, $password){
