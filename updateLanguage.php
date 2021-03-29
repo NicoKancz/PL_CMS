@@ -12,7 +12,7 @@ $id = htmlspecialchars($_GET['id']);
 
 //check if form is submitted
 if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
-    //check if container fields are not empty
+    //check if container fields are valid
     if (emptyInputCheck($_POST['name'])){
         $nameErr = 'Naam is verplicht';
     } else {

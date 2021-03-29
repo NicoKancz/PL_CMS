@@ -24,7 +24,6 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         changePassword($conn, $_SESSION['userId'], $password);
         close_db($conn);
         header("location:profile.php");
-        echo '<p id="geregistreerdText">Je wachtwoord is veranderd</p>';
         exit();
     }else{
         close_db($conn);
@@ -38,7 +37,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     <input type="password" name="password" placeholder="Wachtwoord"><br>
     <label for="passwordRepeat">Nieuw wachtwoord herhalen</label><br>
     <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
-    <input class="btnSubmit" type="submit" name="btnSubmit" value="Veranderen"><br>
+    <input class="btnSubmit" type="submit" name="btnSubmit" value="Wachtwoord veranderen"><br>
     <span class="error">* Verplichte velden</span>
 </form>
 <?php

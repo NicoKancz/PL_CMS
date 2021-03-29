@@ -12,7 +12,7 @@ $name = $email = $password = '';
 if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
     //connect to database and add the data to table user
     $conn = connect_db();
-    //check if language fields are not empty
+    //check if language fields are valid
     if(emptyInputCheck($_POST['name'])){
         $nameErr = 'Name is verplicht';
     }elseif(invalidUsernameCheck($_POST['name'])){
@@ -54,15 +54,15 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
     <h1>Registreren</h1>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" action="<?=htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="name">Gebruikersnaam</label>
-        <span class="error">* <?php echo $nameErr;?></span><br>
+        <span class="error">* <?=$nameErr;?></span><br>
         <input type="text" name="name" placeholder="Gebruikersnaam"><br>
         <label for="email">Email</label>
-        <span class="error">* <?php echo $emailErr;?></span><br>
+        <span class="error">* <?=$emailErr;?></span><br>
         <input type="text" name="email" placeholder="Email"><br>
         <label for="password">Wachtwoord</label>
-        <span class="error">* <?php echo $passwordErr;?></span><br>
+        <span class="error">* <?=$passwordErr;?></span><br>
         <input type="password" name="password" placeholder="Wachtwoord"><br>
         <label for="passwordRepeat">Wachtwoord herhalen</label><br>
         <input type="password" name="passwordRepeat" placeholder="Wachtwoord herhalen"><br>
