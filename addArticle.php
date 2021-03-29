@@ -25,12 +25,12 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
         $desc = $_POST['desc'];
     }
 
-    if (!empty($_POST['name']) && !empty($_POST['desc'])) {
-        $newContainer = new Container($_POST['name'], $_POST['desc'],date("Y-m-d"),$_SESSION['languageId']);
+    if (!empty($name) && !empty($desc)) {
+        $newArticle = new Article($name, $desc);
 
-        createContainer($conn, $newContainer);
+        createContainer($conn, $newArticle);
         close_db($conn);
-        header("location:category.php?id=" . $_SESSION['languageId']);
+        header("location:theme.php");
     }
 }
 ?>

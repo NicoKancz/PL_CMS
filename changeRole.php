@@ -46,7 +46,12 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         <input type="text" name="name" placeholder="Naam"><br>
         <label for="role">Nieuwe rol</label>
         <span class="error">* <?=$roleErr;?></span><br>
-        <input type="text" name="role" placeholder="Rol"><br>
+        <select name="role">
+            <option value="Administrator">Administrator</option>
+            <option value="Moderator">Moderator</option>
+            <option value="Gebruiker" selected="selected">Gebruiker</option>
+            <option value="Blocked">Blocked</option>
+        </select><br>
         <input class="btnSubmit" type="submit" name="btnSubmit" value="Rol veranderen"><br>
         <span class="error">* Verplichte velden</span>
     </form>

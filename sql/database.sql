@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS containers(
     containerName varchar(255) NOT NULL,
     containerDescription text,
     containerDate date,
+    containerLink tinyint NOT NULL DEFAULT 1,
     languageId int NOT NULL,
     PRIMARY KEY (containerId),
     CONSTRAINT FK_LanguageContainer FOREIGN KEY (languageId)
