@@ -25,8 +25,8 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST"){
         $desc = $_POST['appearance'];
     }
 
-    if (!empty($_POST['name']) && !empty($_POST['appearance'])) {
-        $newLanguage = new Language($_POST['name'], $_POST['appearance']);
+    if (!empty($name) && !empty($appearance)) {
+        $newLanguage = new Language($name,$appearance);
 
         updateLanguage($conn, $id, $newLanguage);
         close_db($conn);

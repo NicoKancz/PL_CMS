@@ -25,7 +25,7 @@
                             echo '<li><a href="/PL_CMS/category.php?id=' . htmlspecialchars($row['languageId']) . '">' . htmlspecialchars($row['languageName']) . '</a>';
                             if(isset($_SESSION['userName']) && $_SESSION['userRole'] == 1){
 //                                echo '<a class="btnDeleteLanguage" href="/PL_CMS/includes/deleteLanguage.inc.php?id=' . $row['languageId'] . '"> - </a>';
-                                echo '<a class="btnUpdateLanguage" href="/PL_CMS/updateLanguage.php?id=' . $row['languageId'] . '"> Edit </a>';
+//                                echo '<a class="btnUpdateLanguage" href="/PL_CMS/updateLanguage.php?id=' . $row['languageId'] . '"> Edit </a>';
                             }
                             echo '</li>';
                         }

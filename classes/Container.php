@@ -5,14 +5,16 @@ class Container {
     protected $name = "Naam";
     protected $description = "Beschrijving";
     protected $date = 2021-03-17;
+    protected $link = 1;
     protected $languageId = 0;
 
     //methods
     //constructor
-    public function __construct($name, $desc, $date, $languageId){
+    public function __construct($name, $desc, $date, $link, $languageId){
         $this->name = $name;
         $this->description = $desc;
         $this->date = $date;
+        $this->link = $link;
         $this->languageId = $languageId;
     }
 
@@ -35,6 +37,10 @@ class Container {
 
     public function getDate(){
         return $this->date;
+    }
+
+    public function getLink(){
+        return $this->link;
     }
 
     public function getLangId(){

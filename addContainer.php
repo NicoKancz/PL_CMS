@@ -6,7 +6,7 @@
 
     //initialize name & appearance variables
     $nameErr = $descErr = '';
-    $name = $desc = '';
+    $name = $desc = $link = '';
     $conn = connect_db();
     $language = getLanguage($conn, htmlspecialchars($_SESSION['languageId']));
 
@@ -25,8 +25,14 @@
             $desc = $_POST['desc'];
         }
 
-        if (!empty($_POST['name']) && !empty($_POST['desc'])) {
-            $newContainer = new Container($_POST['name'], $_POST['desc'],date("Y-m-d"),$_SESSION['languageId']);
+        if(isset($_POST['link'])){
+            $link = $_POST['link'];
+        }else{
+            $link = 0;
+        }
+
+        if (!empty($name) && !empty($desc) && !empty($link)) {
+            $newContainer = new Container($name, $desc, date("Y-m-d"), $link, $_SESSION['languageId']);
 
             createContainer($conn, $newContainer);
             close_db($conn);
@@ -44,6 +50,8 @@
             <span class="error">* <?=$descErr;?></span><br>
             <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"></textarea><br>
             <input class="btnSubmit" type="submit" name="btnSubmit" value="Container aanmaken"/><br>
+            <input type="checkbox" name="link" value="1" checked>
+            <label for="link"> Link zetten?</label>
             <span class="error">* Verplichte velden</span>
         </form>
     </main>

@@ -35,9 +35,9 @@ function deleteLanguage($conn, $id){
 
 //Container queries
 function createContainer($conn, $container){
-    $query = "INSERT INTO containers(containerName,containerDescription,containerDate,languageId)
-                VALUES(?,?,?,?)";
-    $conn->prepare($query)->execute([$container->getName(),$container->getDesc(),$container->getDate(),$container->getLangId()]);
+    $query = "INSERT INTO containers(containerName,containerDescription,containerDate,containerLink,languageId)
+                VALUES(?,?,?,?,?)";
+    $conn->prepare($query)->execute([$container->getName(),$container->getDesc(),$container->getDate(),$container->getLink(),$container->getLangId()]);
 }
 
 function getContainer($conn, $id){
@@ -55,9 +55,9 @@ function getContainers($conn, $id){
 }
 
 function updateContainer($conn, $id, $container){
-    $query = "UPDATE containers SET containerName=?, containerDescription=?, containerDate=? WHERE containerId=?";
+    $query = "UPDATE containers SET containerName=?, containerDescription=?, containerDate=?, containerLink=? WHERE containerId=?";
     $stmt = $conn->prepare($query);
-    $stmt->execute([$container->getName(),$container->getDesc(),$container->getDate(),$id]);
+    $stmt->execute([$container->getName(),$container->getDesc(),$container->getDate(),$container->getLink(),$id]);
 }
 
 function deleteContainer($conn, $id){
