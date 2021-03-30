@@ -1,6 +1,5 @@
 <?php
 
-
 class Article{
     //properties
     protected $name = "Naam";
@@ -12,11 +11,13 @@ class Article{
 
     //methods
     //constructor
-    public function __construct($name, $desc, $date, $img){
+    public function __construct($name, $desc, $img, $date, $userId, $containerId){
         $this->name = $name;
         $this->description = $desc;
-        $this->date = $date;
         $this->image = $img;
+        $this->date = $date;
+        $this->userId = $userId;
+        $this->containerId = $containerId;
     }
 
     //getters & setters

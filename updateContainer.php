@@ -56,7 +56,7 @@
             <span class="error">* <?=$descErr;?></span><br>
             <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"><?=$result['containerDescription'];?></textarea><br>
             <input type="checkbox" name="link" value="1" checked>
-            <label for="link"> Link zetten?</label>
+            <label for="link"> Link zetten?</label><br>
             <input class="btnSubmit" type="submit" name="btnSubmit" value="Container bijwerken"/><br>
             <span class="error">* Verplichte velden</span>
         </form>

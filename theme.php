@@ -19,7 +19,7 @@
         <?php
             if(isset($_SESSION['userName']) && $_SESSION['userRole'] !== 4){
                 echo '<div class="center">
-                        <a class="btnProfile" href="addArticle.php">Nieuw item toevoegen aan ' . $container['containerName'] . '</a>
+                        <a class="btnProfile" href="addArticle.php?id=' . $container['containerId'] . '">Nieuw item toevoegen aan ' . $container['containerName'] . '</a>
                     </div>';
             }
             echo '';
