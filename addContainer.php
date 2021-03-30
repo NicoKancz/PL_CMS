@@ -51,7 +51,7 @@
             <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"></textarea><br>
             <input class="btnSubmit" type="submit" name="btnSubmit" value="Container aanmaken"/><br>
             <input type="checkbox" name="link" value="1" checked>
-            <label for="link"> Link zetten?</label>
+            <label for="link"> Link zetten?</label><br>
             <span class="error">* Verplichte velden</span>
         </form>
     </main>
