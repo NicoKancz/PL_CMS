@@ -1,17 +1,23 @@
 <?php
     require_once './includes/queries.inc.php';
+    require_once './includes/functions.inc.php';
     include_once './page_parts/header.php';
 
+    //get id from language
     if(isset($_GET['id'])){
         $_SESSION['languageId'] = $_GET['id'];
     }
     $conn = connect_db();
     $language = getLanguage($conn, htmlspecialchars($_SESSION['languageId']));
+//    //save information for the path in the header
+//    $_SESSION['directory'] = $_SERVER['PHP_SELF'];
+//    $_SESSION['dirName'] = makeDirName('language', $language);
+
+
 ?>
     <h1>Containers van <?=htmlspecialchars($language['languageName']);?></h1>
     <main class="containers">
         <?php
-            $conn = connect_db();
             $rows = getContainers($conn, htmlspecialchars($_SESSION['languageId']));
             foreach($rows as $row){
                 echo
@@ -39,4 +45,5 @@
     </main>
 <?php
     include_once './page_parts/footer.php';
+    close_db($conn);
 ?>

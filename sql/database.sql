@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS articles(
 	articleId int NOT NULL AUTO_INCREMENT,
     articleName varchar(255) NOT NULL,
     articleDescription mediumtext,
+    articleType varchar(125) NOT NULL,
     articleImage varchar(255),
     articleDate date,
     userId int NOT NULL,

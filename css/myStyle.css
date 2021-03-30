@@ -32,10 +32,6 @@ nav{
     align-items: center;
 }
 
-.languageContainer h2 p{
-    margin: 0;
-}
-
 label{
     color: white;
     text-shadow: 0px 0px 5px lightblue;
@@ -50,7 +46,7 @@ select, input, textarea{
     font-size: large;
 }
 
-a:link, a:visited{
+a:link, a:visited, #directory p{
     color: midnightblue;
     border-radius: 5px;
     text-shadow: 0px 0px 5px black;
@@ -60,6 +56,7 @@ a:link, a:visited{
 
 a:hover{
     color: dodgerblue;
+    cursor: pointer;
     text-shadow: 0px 0px 5px grey;
     text-decoration: none;
 }
@@ -68,6 +65,7 @@ a:hover{
     text-align: center;
 }
 
+/* Containers */
 .containers{
     display: flex;
     justify-content: center;
@@ -100,6 +98,49 @@ a:hover{
 
 .languageContainerPlus h2{
     margin: 0;
+}
+
+/* Dropdown */
+#categories{
+    width: 15%;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    list-style-type: none;
+}
+
+#categories *{
+    font-size: 20px;
+}
+
+#btnAddLanguage:hover {
+    border-radius: 2px;
+}
+
+.btnDropdown{
+    color: midnightblue;
+    border-radius: 5px;
+    text-shadow: 0px 0px 5px black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdownContent{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+#categories:hover .dropdownContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .error{
@@ -141,21 +182,10 @@ a:hover{
     width: 5%;
 }
 
-#categories{
-    width: 65%;
-    margin: 0;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-#categories *{
+#directory{
+    width: 15%;
     font-size: 20px;
-}
-
-#btnAddLanguage:hover {
-    border-radius: 2px;
+    margin: 0;
 }
 
 #search{
