@@ -143,6 +143,28 @@ a:hover{
     flex-wrap: wrap;
 }
 
+/* Articles */
+.articles{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.articles h1{
+    width: 100vw;
+}
+
+.item{
+    background-color: whitesmoke;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    width: 100vw;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    margin-bottom: 0.5%;
+}
+
 .error{
     color: red;
     font-weight: bold;

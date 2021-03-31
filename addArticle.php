@@ -5,8 +5,8 @@ require_once './includes/validation.inc.php';
 include_once './page_parts/header.php';
 
 //initialize name & appearance variables
-$nameErr = $descErr = $imageErr = $dateErr = '';
-$name = $desc = $image = $date = '';
+$nameErr = $descErr = $typeErr = $imageErr = $dateErr = '';
+$name = $desc = $type = $image = $date = '';
 $conn = connect_db();
 $container = getContainer($conn, htmlspecialchars($_SESSION['containerId']));
 
@@ -25,12 +25,18 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
         $desc = $_POST['desc'];
     }
 
+    if (emptyInputCheck($_POST['type'])) {
+        $typeErr = 'Type is verplicht';
+    } else {
+        $type = $_POST['type'];
+    }
+
     $image = $_POST['image'];
 
     $date = date("Y-m-d");
 
-    if (!empty($name) && !empty($desc) && !empty($date)) {
-        $newArticle = new Article($name, $desc, $image, $date, $_SESSION['userId'], $container['containerId']);
+    if (!empty($name) && !empty($desc) && !empty($type) && !empty($date)) {
+        $newArticle = new Article($name, $desc, $type, $image, $date, $_SESSION['userId'], $container['containerId']);
 
         createArticle($conn, $newArticle);
         close_db($conn);
@@ -39,7 +45,7 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
     <main>
-        <h1>Een nieuwe item toevoegen voor de container <?=$container['containerId'] ?></h1>
+        <h1>Een nieuwe item toevoegen voor de container <?=$container['containerName'] ?></h1>
         <form method="post" action="addArticle.php?id=<?=htmlspecialchars($container['containerId']) ?>">
             <label for="name">Titel van het item</label>
             <span class="error">* <?=$nameErr;?></span><br>
@@ -47,8 +53,13 @@ if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="desc">Beschrijving</label>
             <span class="error">* <?=$descErr;?></span><br>
             <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"></textarea><br>
+            <label for="type">Type</label>
+            <span class="error">* <?=$typeErr;?></span><br>
+            <select class="form-control" name="type">
+                <option value="Standard">Standaard</option>
+            </select><br>
             <label for="name">Image van het item</label>
-            <span class="error"><?=$nameErr;?></span><br>
+            <span class="error"><?=$imageErr;?></span><br>
             <input type="text" name="image" placeholder="Image"/><br>
             <input class="btnSubmit" type="submit" name="btnSubmit" value="Item aanmaken"/><br>
             <span class="error">* Verplichte velden</span>

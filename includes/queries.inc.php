@@ -68,17 +68,17 @@ function deleteContainer($conn, $id){
 
 //Article queries
 function createArticle($conn, $article){
-    $query = "INSERT INTO articles(articleName, articleDescription, articleImage, articleDate, userId, containerId) 
-                VALUES(?,?,?,?,?,?)";
+    $query = "INSERT INTO articles(articleName, articleDescription, articleType, articleImage, articleDate, userId, containerId) 
+                VALUES(?,?,?,?,?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->execute([$article->getName(),$article->getDesc(),$article->getImage(),$article->getDate(),$article->getUserId(),$article->getContainerId()]);
+    $stmt->execute([$article->getName(),$article->getDesc(),$article->getType(),$article->getImage(),$article->getDate(),$article->getUserId(),$article->getContainerId()]);
 }
 
-function getArticle($conn, $id){
-    $query = "SELECT * FROM articles WHERE articleId=?";
+function getArticles($conn, $id){
+    $query = "SELECT * FROM articles WHERE containerId=?";
     $stmt = $conn->prepare($query);
     $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function updateArticle($conn, $id, $article){

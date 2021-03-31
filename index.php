@@ -2,7 +2,7 @@
 include_once './page_parts/header.php';
 ?>
     <main>
-        <h1>Welkom <?php echo $_SESSION['userName'] ?> </h1>
+        <h1>Welkom <?=$_SESSION['userName'];?> </h1>
         <p id="indexText">
             Een Content Management System website met de bedoeling
             om informatie en nieuwigheden van de verschillende

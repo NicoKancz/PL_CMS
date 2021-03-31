@@ -4,6 +4,7 @@ class Article{
     //properties
     protected $name = "Naam";
     protected $description = "Beschrijving";
+    protected $type = "Standaard";
     protected $image = "./img/image.jpg";
     protected $date = 2021-03-17;
     protected $userId = 0;
@@ -11,9 +12,10 @@ class Article{
 
     //methods
     //constructor
-    public function __construct($name, $desc, $img, $date, $userId, $containerId){
+    public function __construct($name, $desc, $type, $img, $date, $userId, $containerId){
         $this->name = $name;
         $this->description = $desc;
+        $this->type = $type;
         $this->image = $img;
         $this->date = $date;
         $this->userId = $userId;
@@ -34,7 +36,15 @@ class Article{
     }
 
     public function setDesc($desc){
-        $this->name = $desc;
+        $this->desc = $desc;
+    }
+
+    public function getType(){
+        return $this->type;
+    }
+
+    public function setType($type){
+        $this->type = $type;
     }
 
     public function getDate(){
