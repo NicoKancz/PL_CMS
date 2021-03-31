@@ -74,6 +74,13 @@ function createArticle($conn, $article){
     $stmt->execute([$article->getName(),$article->getDesc(),$article->getType(),$article->getImage(),$article->getDate(),$article->getUserId(),$article->getContainerId()]);
 }
 
+function getArticle($conn, $id){
+    $query = "SELECT * FROM articles WHERE articleId=?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 function getArticles($conn, $id){
     $query = "SELECT * FROM articles WHERE containerId=?";
     $stmt = $conn->prepare($query);
@@ -82,9 +89,9 @@ function getArticles($conn, $id){
 }
 
 function updateArticle($conn, $id, $article){
-    $query = "UPDATE articles SET articleName=?, articleDescription=?, articleImage=? WHERE articleId=?";
+    $query = "UPDATE articles SET articleName=?, articleDescription=?, articleType=?, articleImage=? WHERE articleId=?";
     $stmt = $conn->prepare($query);
-    $stmt->execute([$article->getName(),$article->getDesc(),$article->getImage(),$article->getDate(),$id]);
+    $stmt->execute([$article->getName(),$article->getDesc(),$article->getType(),$article->getImage(),$id]);
 }
 
 function deleteArticle($conn, $id){
