@@ -7,8 +7,12 @@
     //initialize name & appearance variables
     $nameErr = $descErr = '';
     $name = $desc = $link = '';
-    //get the id from current task
-    $id = htmlspecialchars($_GET['id']);
+
+    //connect to database
+    $conn = connect_db();
+    //get data from the current container
+    $container = getContainer($conn, htmlspecialchars($_GET['id']));
+    close_db($conn);
 
     //check if form is submitted
     if(isset($_POST['btnSubmit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,29 +36,24 @@
         }
 
         if (!empty($name) && !empty($desc)) {
-            $newContainer = new Container($name,$desc,date("Y-m-d"),$link,$_SESSION['languageId']);
+            $conn = connect_db();
+            $newContainer = new Container($name,$desc,$container['containerDate'],$link,$container['languageId']);
 
-            updateContainer($conn, $id, $newContainer);
+            updateContainer($conn, $container['containerId'], $newContainer);
             close_db($conn);
-            header("location:category.php?id=" . $_SESSION['languageId']);
+            header("location:category.php?id=" . $container['languageId']);
         }
-    }else{
-        //connect to database
-        $conn = connect_db();
-        //get data from the current container
-        $result = getContainer($conn, $id);
-        close_db($conn);
     }
 ?>
     <main>
-        <h1>Container <?=$result['containerName'];?> bijwerken </h1>
-        <form method="post" action="updateContainer.php?id=<?=htmlspecialchars($id);?>">
+        <h1>Container <?=$container['containerName'];?> bijwerken </h1>
+        <form method="post" action="updateContainer.php?id=<?=$container['containerId'];?>">
             <label for="name">Titel</label>
             <span class="error">* <?=$nameErr;?></span><br>
-            <input type="text" name="name" placeholder="Titel" value="<?=$result['containerName'];?>"/><br>
+            <input type="text" name="name" placeholder="Titel" value="<?=$container['containerName'];?>"/><br>
             <label for="desc">Beschrijving</label>
             <span class="error">* <?=$descErr;?></span><br>
-            <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"><?=$result['containerDescription'];?></textarea><br>
+            <textarea name="desc" cols="60" rows="10" placeholder="Beschrijving van de container"><?=$container['containerDescription'];?></textarea><br>
             <input type="checkbox" name="link" value="1" checked>
             <label for="link"> Link zetten?</label><br>
             <input class="btnSubmit" type="submit" name="btnSubmit" value="Container bijwerken"/><br>
